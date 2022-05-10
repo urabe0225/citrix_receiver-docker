@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 MAINTAINER Eduard A. <github-mail@container42.de>
 
 ENV DEBIAN_FRONTEND noninteractive
