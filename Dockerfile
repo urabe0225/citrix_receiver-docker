@@ -6,7 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y firefox apt-utils xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4 dbus-x11 xauth libcurl3 openssh-server wget && \
+    apt-get install -y firefox apt-utils xdg-utils libwebkitgtk-1.0-0 \
+    libxmu6 libxpm4 dbus-x11 xauth libcurl3 openssh-server wget libidn11 && \
     mkdir /var/run/sshd && \
     echo "PermitEmptyPasswords yes" >> /etc/ssh/sshd_config && \
     echo "AddressFamily inet" >> /etc/ssh/sshd_config && \

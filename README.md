@@ -19,9 +19,16 @@ docker run -d -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime
 ## Connect to the container via ssh and X-Forward
 Please set the WEB_URL_TO_LOGIN to your specific login url
 ```
-ssh -f -X receiver@$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' citrix_receiver) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /usr/bin/firefox <WEB_URL_TO_LOGIN> > /dev/null 2>&1
+ssh -f -X receiver@$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' citrix_receiver) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /usr/bin/firefox https://www.auth.iij.jp/signin/ > /dev/null 2>&1
 ```
 
+---
+## Alias Command
+- .bashrc
+```
+alias vdr='docker run -d -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime --name citrix_receiver citrix_receiver'
+alias vds='ssh -f -X receiver@$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" citrix_receiver) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /usr/bin/firefox https://www.auth.iij.jp/signin/ > /dev/null 2>&1'
+```
 
 # Sources
 [Ubuntu wiki](https://wiki.ubuntuusers.de/Citrix_Receiver_13/)
